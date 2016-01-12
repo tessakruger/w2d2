@@ -1,5 +1,6 @@
 require 'csv'
 
+
 # Represents a person in an address book.
 class Contact
 
