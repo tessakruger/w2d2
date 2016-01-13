@@ -12,27 +12,27 @@ class ContactList
 
   user_choice = gets.chomp
 
-case user_choice
-when "new"
-	puts "What is your Full Name?"
-	name = gets.chomp
-	puts "What is your email address?"
-	email = gets.chomp
-	Contact.create(name, email)
-	puts "Your contact information has been added!"
+	case user_choice
+	when "new"
+		puts "What is your Full Name?"
+		name = gets.chomp
+		puts "What is your email address?"
+		email = gets.chomp
+		Contact.create(name, email)
+		puts "#{name}, #{email} has been added."
 
-when "list"
-	Contact.all()
+	when "list"
+		puts Contact.all()
 
-  # if user_choice == "new"
-  # 	puts "new user"
-  # elsif user_choice == "list"
-  # 	user_choice.all
-  # elsif user_choice == "show"
-  # 	user_choice.find
-  # elsif user_choice == "search"
-  # 	user_choice.search
-else
-  end
+	when "show"
+		puts "Please enter an ID number to find a contact:"
+		id = gets.chomp.to_i 
+		puts Contact.find(id)
+
+	when "search"
+		puts "Please enter a first name, last name or email"
+		term = gets.chomp.to_s
+		puts Contact.search(term)
+	end
 
 end
